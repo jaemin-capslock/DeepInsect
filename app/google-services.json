@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "225793810794",
+    "firebase_url": "https://deeplearningapp-aeb92.firebaseio.com",
+    "project_id": "deeplearningapp-aeb92",
+    "storage_bucket": "deeplearningapp-aeb92.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:225793810794:android:03c3e1f307bedbea3f0513",
+        "android_client_info": {
+          "package_name": "com.example.deeplearningapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "225793810794-emb7k7f92de08ttv9r3rfpai3oguh7ah.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYjLHmAjtrGKqlTZzQrvufVF-jrnz7hYI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "225793810794-emb7k7f92de08ttv9r3rfpai3oguh7ah.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
