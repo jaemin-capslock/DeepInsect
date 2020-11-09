@@ -8,72 +8,114 @@
 
     <ImageView
         android:id="@+id/imagePreview"
-        android:layout_width="211dp"
-        android:layout_height="228dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="96dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="350dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.51"
         app:srcCompat="@drawable/common_google_signin_btn_icon_dark"
         tools:srcCompat="@tools:sample/avatars" />
 
     <Button
         android:id="@+id/buttonCamera"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="79dp"
-        android:layout_marginTop="50dp"
+        android:layout_width="88dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="68dp"
         android:layout_marginBottom="201dp"
-        android:text="Camera"
+        android:background="#21AAF3"
+        android:text="@string/camera_button_text"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/buttonGallery"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imagePreview" />
+        app:layout_constraintTop_toBottomOf="@+id/imagePreview"
+        app:layout_constraintVertical_bias="0.124" />
 
     <Button
         android:id="@+id/buttonGallery"
-        android:layout_width="wrap_content"
+        android:layout_width="88dp"
         android:layout_height="48dp"
         android:layout_marginStart="68dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="88dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="70dp"
         android:layout_marginBottom="201dp"
-        android:text="Gallery"
+        android:background="#FFC907"
+        android:text="@string/gallery_button_text"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/buttonCamera"
-        app:layout_constraintTop_toBottomOf="@+id/imagePreview" />
-
-    <Button
-        android:id="@+id/buttonPredict"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="162dp"
-        android:layout_marginTop="169dp"
-        android:layout_marginEnd="161dp"
-        android:layout_marginBottom="42dp"
-        android:text="Predict"
-        app:layout_constraintBottom_toTopOf="@+id/textViewName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imagePreview" />
+        app:layout_constraintTop_toBottomOf="@+id/imagePreview"
+        app:layout_constraintVertical_bias="0.124" />
 
     <TextView
         android:id="@+id/textViewName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="176dp"
-        android:layout_marginTop="42dp"
+        android:layout_marginTop="507dp"
         android:layout_marginEnd="176dp"
-        android:layout_marginBottom="103dp"
-        android:text="TextView"
+        android:layout_marginBottom="200dp"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewSecond"
+        android:layout_width="wrap_content"
+        android:layout_height="19dp"
+        android:layout_marginStart="176dp"
+        android:layout_marginEnd="176dp"
+        android:layout_marginBottom="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewName"
+        app:layout_constraintVertical_bias="0.271" />
+
+    <Button
+        android:id="@+id/buttonDescription"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="277dp"
+        android:layout_marginTop="174dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="52dp"
+        android:onClick="sendPredictionResults"
+        android:text="@string/see_more"
+        android:textSize="10sp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonPredict" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonGallery" />
+
+    <TextView
+        android:id="@+id/textInference"
+        android:layout_width="wrap_content"
+        android:layout_height="19dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="189dp"
+        android:layout_marginBottom="43dp"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonDescription"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonCamera"
+         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

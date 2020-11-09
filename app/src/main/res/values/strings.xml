@@ -1,3 +1,296 @@
 <resources>
-    <string name="app_name">deeplearningapp</string>
+    <string name="app_name">InsectClassifier</string>
+    <string name="camera_button_text">Camera</string>
+    <string name="gallery_button_text">Gallery</string>
+    <string name="predict_button_text">Predict</string>
+    <string name="back">Back</string>
+    <string name="see_more">See more..</string>
+    <string-array name="Neptis_sappho">
+        <item>Pallas’ Sailor</item>
+        <item>Insecta</item>
+        <item>Lepidoptera</item>
+        <item>Nymphalidae</item>
+        <item>Pallas’ Sailor is a butterfly that is found in Central Europe, Russia, and warm parts of Asia and Japan. It is known for its characteristic black and white stripes along its body. You can see this butterfly in May. </item>
+
+    </string-array>
+    <string-array name="Trichius_succinctus">
+        <item>Lasiotrichius succinctus</item>
+        <item>Insecta</item>
+        <item>coleoptera</item>
+        <item>coleoptera</item>
+        <item>Lasiotrichius succinctus is a scarab, a type of a beetle, found in Korea, eastern Siberia, and Japan. It has prominent brown stripes among its body and is known to burrow its head in flowers and consume pollen. You can find this beetle clustered together in flowers during May to August. </item>
+
+    </string-array>
+    <string-array name="Kaniska_canace">
+        <item>Blue Admiral</item>
+        <item>Insecta</item>
+        <item>Lepidoptera</item>
+        <item>Nymphalidae</item>
+        <item>Blue Admirals are butterflies that are found in south and southeast Asia. They are the only species of butterfly in the genus Kaniska. These butterflies are known for their beautiful blue and black pattern on their wings. Although they can be found throughout the year, they are most commonly sighted during April.</item>
+    </string-array>
+    <string-array name="Blattella_germanica">
+        <item>German Cockroach</item>
+        <item>Insecta</item>
+        <item>Blattodea</item>
+        <item>Blattella</item>
+        <item>German Cockroaches are found all around the globe especially in central Europe and the Americas often near human habitation. Although they have wings, they can barely fly. They are considered the most troublesome household pest due to their strong adaptation to almost any climate.</item>
+    </string-array>
+    <string-array name="Coccinella_septempunctata">
+        <item>Seven-Spotted Lady Beetle</item>
+        <item>Insecta</item>
+        <item>Coleoptera</item>
+        <item>Coccinellidae</item>
+        <item>Seven-Spotted Lady Beetles are the most common ladybugs in Europe. Its elytra, hardened wing covers, are red with three spots each. The last spot is in the middle. They are most found in April and May. </item>
+    </string-array>
+    <string-array name="Argiope_bruennichi">
+        <item>Wasp Spider</item>
+        <item>Arachnida</item>
+        <item>Araneae</item>
+        <item>Araneidae</item>
+        <item>Wasp Spiders are a species of orb-web spiders and are found in central Europe, Northern Europe, and parts of Asia. It has yellow and black markings on its abdomen. They are mostly found in August.</item>
+    </string-array>
+    <string-array name="Orthetrum_albistylum">
+        <item>White-Tailed Skimmer</item>
+        <item>Insecta</item>
+        <item>Odonata</item>
+        <item>Libellulidae</item>
+        <item>White-Tailed Skimmers are dragonflies which are distributed among Central Europe to China and Japan. Their bodies are blue with a slightly darker tail tip. They can be found during July and August.  </item>
+    </string-array>
+    <string-array name="Lymantria_dispar">
+        <item>Gypsy Moth</item>
+        <item>Insecta</item>
+        <item>Odonata</item>
+        <item>Libellulidae</item>
+        <item>White-Tailed Skimmers are dragonflies which are distributed among Central Europe to China and Japan. Their bodies are blue with a slightly darker tail tip. They can be found during July and August.</item>
+    </string-array>
+    <string-array name="Limenitis_camilla">
+        <item>Eurasian White Admiral</item>
+        <item>Insecta </item>
+        <item>Lepidoptera </item>
+        <item>Nymphalidae </item>
+        <item>White Admirals are distributed among Southern parts of Europe and Japan. They have black wings with white bands. These contrasting colors help hide themselves from predators. They are mostly seen in July and August. </item>
+    </string-array>
+    <string-array name="Pieris_rapae">
+        <item>Cabbage White</item>
+        <item>Insecta</item>
+        <item>Lepidoptera</item>
+        <item>Nymphalidae </item>
+        <item>Cabbage butterflies are found around the globe. This butterfly is known for its characteristic white wings with black spots, and are found mostly in July. They are known to have originated in Europe but spread due to human trade routes. </item>
+    </string-array>
+    <string-array name="Tenodera_aridifolia">
+        <item>Japanese Giant Mantis</item>
+        <item>Insecta</item>
+        <item>Mantodea</item>
+        <item>Mantidae</item>
+        <item>Japanese Giant Mantis are found in Asia and are known for its similarity with the Chinese Mantis. </item>
+    </string-array>
+    <string-array name="Sympetrum_pedemontanum">
+        <item>Banded Darter</item>
+        <item>Insecta </item>
+        <item>Odonata </item>
+        <item>Libellulidae</item>
+        <item>Banded Darters are distributed among Central Europe and Asia. They are known for their characteristic red bodies and wings with wide bands. They are mostly found in July. </item>
+    </string-array>
+    <string-array name="Daimio_tethys">
+        <item>Daimio tethys</item>
+        <item>Insecta</item>
+        <item>Lepidoptera </item>
+        <item>Hesperiidae</item>
+        <item>Daimio Tethys are distributed along Eastern Asia, Japan, Taiwan, and Korea. They have white spots along their wings. These butterflies are mostly found during May and June.</item>
+    </string-array>
+    <string-array name="Statilia_maculata">
+        <item>Asian Jumping Mantis</item>
+        <item>Insecta </item>
+        <item>Mantodea </item>
+        <item>Mantidae</item>
+        <item>Asian Jumping Mantis is a species that is native to Asia and can be found in Korea, China, and Japan. It is classified as endangered in South Korea. They are found between August and October. </item>
+    </string-array>
+    <string-array name="Celastrina_argiolus">
+        <item>Holly Blue</item>
+        <item>Insecta</item>
+        <item>Lepidoptera</item>
+        <item>Lycaenidae</item>
+        <item>Holly Blue is a species of butterfly that is native to Eurasia and North America, although now it is found in some parts of Asia as well. Known for their beautiful blue hue, their wings are pale blue with ivory dots. They are usually seen between July and August.</item>
+    </string-array>
+    <string-array name="Corymbia_rubra">
+        <item>Red Pine Longhorn</item>
+        <item>Insecta</item>
+        <item>Coleoptera</item>
+        <item>Cerambycidae</item>
+        <item>Red Pine Longhorns are beetles that are native to Europe. It is a species that exhibits sexual dimorphism, with females being reddish-brown while males are black. They are mostly found in July and August. </item>
+    </string-array>
+    <string-array name="Bothrogonia_japonica">
+        <item>Black-Tipped Leafhopper</item>
+        <item>Insecta</item>
+        <item>Hemiptera</item>
+        <item>Cicadellidae </item>
+        <item>Black -Tipped Leafhoppers are distributed along Africa, Asia, and Europe. This species exhibits a yellow-green body that turns orange when dead. They can be found throughout the year.</item>
+    </string-array>
+    <string-array name="Pholcus_phalangioides">
+        <item>Daddy Longlegs Spider</item>
+        <item>Arachnida </item>
+        <item>Araneae </item>
+        <item>Pholcidae</item>
+        <item>Daddy Longlegs are found all over the world mostly in human habitats due to their inability to withstand the cold. They have very long legs that are 5 to 6 times the length of their body. Although they are venomous, they do not affect humans. These spiders
+are found all throughout the year.</item>
+    </string-array>
+    <string-array name="Orthetrum_triangulare">
+        <item>Blue-Tailed Forest Hawk</item>
+        <item>Insecta</item>
+        <item>Odonata</item>
+        <item>Libellulidae</item>
+        <item>Blue Tailed Forest Hawks are a species of skimmers that are native to Asia. It is a freshwater species and is known to reside near marshes. They have a black face with bluish eyes and an azure blue body and are found mostly in June and July.
+</item>
+    </string-array>
+    <string-array name="Hyphantria_cunea">
+        <item>Fall Webworm Moth</item>
+        <item>Insecta </item>
+        <item>Lepidoptera </item>
+        <item>Erebidae</item>
+        <item>Fall Webworm Moths are considered pests but they do not do direct harm on healthy wood. They are mostly found in North America although they can be seen in parts of Asia and Europe as well. These moths are known for their webbed nests. They can be found in August and September. </item>
+    </string-array>
+    <string-array name="Tenodera_angustipennis">
+        <item>Narrow-winged Mantis</item>
+        <item>Insecta </item>
+        <item>Mantodea </item>
+        <item>Mantidae</item>
+        <item>Narrow-winged Mantis are a species that is native to Asia but found in eastern parts of the US as well. They are mostly brown or green with a patterned brown streak on each of their wings. They can be found throughout the year but most in September to October. </item>
+    </string-array>
+    <string-array name="Papilio_xuthus">
+        <item>Chinese Yellow Swallowtail</item>
+        <item>Insecta </item>
+        <item>Lepidoptera </item>
+        <item>Papilionidae</item>
+        <item>Chinese Yellow Swallowtail is a species of butterfly that is found in northeast Asia, the Korean peninsula, China, Japan, and the Hawaiian islands. They mate multiple times in life and are quite common. They can be seen from May to August. </item>
+    </string-array>
+    <string-array name="Minois_dryas">
+        <item>Dryad</item>
+        <item>Insecta </item>
+        <item>Lepidoptera </item>
+        <item>Nymphalidae</item>
+        <item>Dryads are a species of butterflies that are found in Eastern and Central Europe to central Asia and Japan. They prefer habitats with plenty of grass and flowers. These butterflies have dark brown wings with bluish eyelets and can  be seen in July and August. </item>
+    </string-array>
+    <string-array name="Tachycines_asynamorus">
+        <item>Greenhouse Camel Cricket</item>
+        <item>Insecta </item>
+        <item>Orthoptera </item>
+        <item>Rhaphidophoridae</item>
+        <item>Greenhouse Camel Crickets originated in caves of Eastern Asia. They are omnivorous and sometimes carnivorous, eating dead insects. They have very long antennas and are found throughout the year. </item>
+    </string-array>
+    <string-array name="Acrida_cinerea">
+        <item>Oriental Longheaded Locust</item>
+        <item>Insecta </item>
+        <item>Orthoptera </item>
+        <item>Acrididae</item>
+        <item>Oriental Longheaded Locusts are found in East Asia especially in China, Korea, and Japan. They do not make noise when they are moving and are either brown or green in color with transparent wings. </item>
+
+    </string-array>
+    <string-array name="Henosepilachna_vigintioctopunctata">
+        <item>Hadda Beetle</item>
+        <item>Insecta</item>
+        <item>Coleoptera</item>
+        <item>Coccinellidae</item>
+        <item>Hadda Beetles are a type of ladybug that originated in southeast Asia. They cause agricultural damage especially in potato crops and are found throughout the year. </item>
+    </string-array>
+    <string-array name="Polygonia_c_aureum">
+        <item>Asian Comma</item>
+        <item>Insecta</item>
+        <item>Lepidoptera </item>
+        <item>Nymphalidae</item>
+        <item> Asian Commas are a species of butterfly that are found mostly in the Korean Peninsula. They have orange wings with black dots. Although they can be observed throughout the year they are mostly found in October. </item>
+    </string-array>
+    <string-array name="Vespa_mandarinia">
+        <item>Asian Giant Hornet</item>
+        <item>Insecta</item>
+        <item>Hymenoptera</item>
+        <item>Vespidae</item>
+        <item>The Asian Giant Hornet is the biggest hornet in the world and is found in temperate parts of Asia and some parts in Russia. These hornets have a stinger that is 6 mm long and can inject deadly venom. Although they can be observed throughout the year, they are mostly found in October.
+</item>
+    </string-array>
+    <string-array name="Ypthima_argus">
+        <item>Common Fivering</item>
+        <item>Insecta </item>
+        <item>Lepidoptera </item>
+        <item>Nymphalidae</item>
+        <item>Common Fivering is a species of butterfly that is found in Asia. These butterflies have different features during the dry and wet season. They can be mostly observed in April and May.</item>
+    </string-array>
+    <string-array name="Riptortus_pedestris">
+        <item>Riptortus_pedestris</item>
+        <item>Insecta</item>
+        <item>Hemiptera</item>
+        <item>Alydidae</item>
+        <item>Riptortus Pedestris is a leaf-footed bug that is found in eastern Asia such as China, Korea, and Japan. These bugs are considered as pests in South Korean agriculture. They are mostly observed in August.
+</item>
+    </string-array>
+    <string-array name="Pseudozizeeria_maha">
+        <item>Pale Grass Blue</item>
+        <item>Insecta </item>
+        <item>Lepidoptera </item>
+        <item>Lycaenidae</item>
+        <item>The Pale Grass blue is a small butterfly that is distributed among Asia. These butterflies have different forms during the wet season and dry season; in the wet season males exhibit a pale blue while in the dry season a pale bluish grey. They are mostly found in April to early May.</item>
+    </string-array>
+    <string-array name="Periplaneta_americana">
+        <item>American Cockroach</item>
+        <item>Insecta </item>
+        <item>Blattodea </item>
+        <item>Blattidae</item>
+        <item>The American Cockroach is native to Africa but can be found around the world. It is often considered a pest and is the largest species of cockroach. These cockroaches can be found all over the year especially in warm environments such as houses. </item>
+    </string-array>
+    <string-array name="Lycorma_delicatula">
+        <item>Spotted Lanternfly</item>
+        <item>Insecta</item>
+        <item>Hemiptera </item>
+        <item>Fulgoridae</item>
+        <item>The Spotted Lanternfly is a planthopper that is native to China and India. It was accidentally introduced to Korea and is considered a pest. It is known for their bright red underside. These species can be found in August. </item>
+    </string-array>
+    <string-array name="Halyomorpha_halys">
+        <item>Brown Marmorated Stink Bug</item>
+        <item>Insecta </item>
+        <item>Hemiptera </item>
+        <item>Pentatomidae</item>
+        <item>Brown Marmorated Stink Bugs are found in Europe, North America, and Eastern Asia. These bugs are found all throughout the year. </item>
+    </string-array>
+    <string-array name="Colias_erate">
+        <item>Eastern Pale Clouded Yellow</item>
+        <item>Insecta </item>
+        <item>Lepidoptera </item>
+        <item>Pieridae</item>
+        <item>Eastern Pale Clouded Yellow is a type of butterfly that is found in South Korea and Japan. They are known for their bright yellow wings. These butterflies are mostly found in June to July. </item>
+    </string-array>
+    <string-array name="Vanessa_indica">
+        <item>Asian Admiral</item>
+        <item>Insecta </item>
+        <item>Lepidoptera </item>
+        <item>Nymphalidae</item>
+        <item>Asian Admirals are a species of butterfly that is found in high altitudes of India and in parts of Asia such as China and South Korea. They are known for being very fast and able to survive in high altitudes. These butterflies can be found in October. </item>
+    </string-array>
+    <string-array name="Papilo_bianor">
+        <item>Chinese Peacock Swallowtail</item>
+        <item>Insecta </item>
+        <item>Lepidoptera </item>
+        <item>Papilionidae</item>
+        <item>Chinese Peacock Swallowtails are a species of butterfly that is native to China and is mostly found in China and Taiwan. They are known for their beautiful green and black scales. These butterflies are mostly seen in July and August.</item>
+    </string-array>
+    <string-array name="Cupido_argiades">
+        <item>Short-Tailed Blue</item>
+        <item>Insecta </item>
+        <item>Lepidoptera </item>
+        <item>Lycaenidae</item>
+        <item>Short-Tailed Blue is a species of butterfly that is found from Europe to Japan. Males have violet wings with brown tips while females have grey-blue uppersides. They are found mostly in July and August. </item>
+    </string-array>
+    <string-array name="Cicadella_viridis">
+        <item>Green Leafhopper</item>
+        <item>Insecta </item>
+        <item>Hemiptera </item>
+        <item>Cicadellidae </item>
+        <item>Green Leafhoppers are found in most of Europe and some parts of Asia. They inhabit grassy areas and marshes and have green or yellow bodies. These leafhoppers are found mostly in July and August. </item>
+    </string-array>
+    <string-array name="Pieris_canidia">
+        <item>Indian Cabbage White</item>
+        <item>Insecta </item>
+        <item>Lepidoptera </item>
+        <item>Pieridae</item>
+        <item>Indian Cabbage White is a species of butterfly that is found mostly in India and Nepal. They are known for their white wings and black scales and can be observed in April to May.</item>
+    </string-array>
+
 </resources>

@@ -12,25 +12,25 @@ import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.SystemClock
 import android.provider.MediaStore
-import android.provider.MediaStore.Images.Media.getBitmap
 import android.util.Log
-import android.widget.Button
+import android.view.View
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.graphics.get
 import com.google.firebase.ml.custom.*
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.*
 import java.text.SimpleDateFormat
 
+const val EXTRA_MESSAGE = "com.example.deeplearningapp.MESSAGE"
 class MainActivity : AppCompatActivity() {
 
     val CAMERA_PERMISSION = arrayOf(Manifest.permission.CAMERA)
     val STORAGE_PERMISSION = arrayOf(
         Manifest.permission.READ_EXTERNAL_STORAGE
-        , Manifest.permission.WRITE_EXTERNAL_STORAGE
+        ,Manifest.permission.WRITE_EXTERNAL_STORAGE
     )
 
     val FLAG_PERM_CAMERA = 98
@@ -40,9 +40,10 @@ class MainActivity : AppCompatActivity() {
     val FLAG_REQ_STORAGE = 102
     val IMAGE_WIDTH = 380
     val IMAGE_HEIGHT = 380
+    var speciesName : String = ""
 
 
-    var inputimage = Array(1) { Array(300) { Array(300) { FloatArray(3) } } }
+    var inputimage = Array(1) { Array(IMAGE_WIDTH) { Array(IMAGE_HEIGHT) { FloatArray(3) } } }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,38 +52,33 @@ class MainActivity : AppCompatActivity() {
         if (checkPermission(STORAGE_PERMISSION, FLAG_PERM_STORAGE)) {
             setViews()
         }
-        //val intent = Intent(this, SubActivity::class.java)
-        //intent.putExtra("inputimage", this.inputimage)
-        //buttonPredict.setOnClickListener{startActivity(intent)}
 
     }
 
     fun setViews() {
         buttonCamera.setOnClickListener {
-            openCamera()
+            openCameraAndPredict()
         }
         buttonGallery.setOnClickListener {
-            openGallery()
+            openGalleryAndPredict()
         }
-        buttonPredict.setOnClickListener{
-            if (inputimage != null){
-                predict(inputimage)
-            }
-        }
+
+        val description : View = findViewById(R.id.buttonDescription)
+        description.visibility = View.GONE
 
 
 
     }
 
 
-    fun openCamera() {
+    fun openCameraAndPredict() {
         if (checkPermission(CAMERA_PERMISSION, FLAG_PERM_CAMERA)) {
             val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             startActivityForResult(intent, FLAG_REQ_CAMERA)
         }
     }
 
-    fun openGallery() {
+    fun openGalleryAndPredict() {
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = MediaStore.Images.Media.CONTENT_TYPE
         startActivityForResult(intent, FLAG_REQ_STORAGE)
@@ -102,6 +98,7 @@ class MainActivity : AppCompatActivity() {
                         imagePreview.setImageURI(uri)
                         val input = processedImage
                         this.inputimage = input
+                        predict(inputimage)
                     }
                 }
                 FLAG_REQ_STORAGE -> {
@@ -113,18 +110,26 @@ class MainActivity : AppCompatActivity() {
                         val processedImage_fromuri = preprocessImage(bitmap)
                         val input =  processedImage_fromuri
                         this.inputimage = input
+                        predict(inputimage)
                     } else {
                         val source = ImageDecoder.createSource(this.contentResolver, uri!!)
                         val map = ImageDecoder.decodeBitmap(source).copy(Bitmap.Config.RGBA_F16, true)
                         val processedImage = preprocessImage(map)
                         val input  = processedImage
                         this.inputimage = input
+                        predict(inputimage)
 
                     }
-
                 }
             }
         }
+    }
+    fun sendPredictionResults (view : View){
+        val message : String = speciesName
+        val intent = Intent(this, ExplanationActivity::class.java).apply {
+            putExtra(EXTRA_MESSAGE, message)
+        }
+        /* startActivity(intent) */ // Disabled. Calling ExplanationActivity induces bug.
     }
 
     fun saveImageFile(filename: String, mimeType: String, bitmap: Bitmap): Uri? {
@@ -166,10 +171,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun preprocessImage(bitmap: Bitmap): Array<Array<Array<FloatArray>>> {
-        val editedBitmap = Bitmap.createScaledBitmap(bitmap, 300, 300, true)
-        val input = Array(1) { Array(300) { Array(300) { FloatArray(3) } } }
-        for (x in 0..299) {
-            for (y in 0..299) {
+        val editedBitmap = Bitmap.createScaledBitmap(bitmap, IMAGE_WIDTH, IMAGE_HEIGHT, true)
+        val input = Array(1) { Array(IMAGE_WIDTH) { Array(IMAGE_HEIGHT) { FloatArray(3) } } }
+        for (x in 0..379) {
+            for (y in 0..379) {
                 val pixel = editedBitmap.getPixel(x, y)
                 input[0][x][y][0] = (Color.red(pixel)) / 255.0f
                 input[0][x][y][1] = (Color.green(pixel)) / 255.0f
@@ -180,9 +185,7 @@ class MainActivity : AppCompatActivity() {
         return input
     }
 
-    /*
-    * 여기서 부터 권한처리 관련 함수
-    */
+    
     fun checkPermission(permissions: Array<out String>, flag: Int): Boolean {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             for (permission in permissions) {
@@ -201,38 +204,66 @@ class MainActivity : AppCompatActivity() {
 
     fun predict(image: Array<Array<Array<FloatArray>>>) {
         val localModel = FirebaseCustomLocalModel.Builder()
-            .setAssetFilePath("effnet3.tflite")
+            .setAssetFilePath("effnetb4.tflite")
             .build()
         val options = FirebaseModelInterpreterOptions.Builder(localModel).build()
         val interpreter = FirebaseModelInterpreter.getInstance(options)
         val inputOutputOptions = FirebaseModelInputOutputOptions.Builder()
-            .setInputFormat(0, FirebaseModelDataType.FLOAT32, intArrayOf(1, 300, 300, 3))
-            .setOutputFormat(0, FirebaseModelDataType.FLOAT32, intArrayOf(1, 40))
+            .setInputFormat(0, FirebaseModelDataType.FLOAT32, intArrayOf(1, 380, 380, 3))
+            .setOutputFormat(0, FirebaseModelDataType.FLOAT32, intArrayOf(1, 59))
             .build()
         val inputs = FirebaseModelInputs.Builder()
             .add(image) // add() as many input arrays as your model requires
             .build()
+        val startTimeForReference = SystemClock.uptimeMillis()
         interpreter!!.run(inputs, inputOutputOptions)
             .addOnSuccessListener { result ->
+                val endTimeForReference = SystemClock.uptimeMillis()
                 val output = result.getOutput<Array<FloatArray>>(0)
                 val probabilities = output[0]
                 val reader = BufferedReader(
-                    InputStreamReader(assets.open("labels.txt"))
+                    InputStreamReader(assets.open("newlabels.txt"))
                 )
-                val labellist = arrayOfNulls<String>(40)
+                val labelList = arrayOfNulls<String>(59)
 
 
 
                 for (i in probabilities.indices) {
 
                     val label = reader.readLine()
-                    labellist[i] = label
+                    labelList[i] = label
                     Log.i("MLKit", String.format("%s: %1.4f", label, probabilities[i]))
                 }
                 val maxIndex = probabilities.indexOf(probabilities.max()!!)
-                val label = labellist[maxIndex]
+                val label = labelList[maxIndex]
+                speciesName = label.toString()
                 val textOutput : String = String.format("%s : %1.4f", label, probabilities.max())
                 textViewName.text = textOutput
+                var high1 : Float = Float.MIN_VALUE
+                var high2 : Float = Float.MIN_VALUE
+                var secondIndex : Int = Int.MIN_VALUE
+                for ((index, value) in probabilities.withIndex()) {
+                    if (value > high1) {
+                        high2 = high1
+                        high1 = value
+                    }
+                    else if (value > high2) {
+                        high2 = value
+                        secondIndex = index
+                    }
+
+                }
+
+                //val secondMaxIndex = probabilities.indexOf(probabilities.max()!!)
+                val secondLabel = labelList[secondIndex]
+                val textSecondOutput : String = String.format("%s : %1.4f", secondLabel, high2)
+                textViewSecond.text = textSecondOutput
+                val description : View = findViewById(R.id.buttonDescription)
+                description.visibility = View.VISIBLE
+                val timeElapsed : Float = (endTimeForReference - startTimeForReference) / 1000f
+                textInference.text = ("Inference Time = " + timeElapsed + "second(s)")
+
+
 
 
 
@@ -266,17 +297,19 @@ class MainActivity : AppCompatActivity() {
             FLAG_PERM_CAMERA -> {
                 for (grant in grantResults) {
                     if (grant != PackageManager.PERMISSION_GRANTED) {
-                        Toast.makeText(this, "PLease grant camera permissions.", Toast.LENGTH_LONG)
+                        Toast.makeText(this, "Please grant camera permissions.", Toast.LENGTH_LONG)
                             .show()
                         return
                     }
                 }
-                openCamera()
+                openCameraAndPredict()
             }
         }
 
 
     }
 }
+
+
 
 
